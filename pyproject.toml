@@ -5,9 +5,14 @@ description = "Mutual Fund API"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "alembic>=1.14.0",
+    "bcrypt==4.0.1",
     "fastapi[standard]>=0.115.6",
+    "passlib[bcrypt]>=1.7.4",
     "psycopg2-binary>=2.9.10",
     "pydantic-settings>=2.7.1",
+    "pyjwt>=2.10.0",
+    "requests>=2.32.3",
     "sqlalchemy>=2.0.36",
 ]
 
