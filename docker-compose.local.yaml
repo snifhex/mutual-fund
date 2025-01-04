@@ -31,6 +31,24 @@ services:
       timeout: 5s
       retries: 5
 
+  mf_service:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: mf_service
+    ports:
+      - "80:80"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@mf_db:5432/mutual_funds
+      - REDIS_HOST=mf_redis
+    depends_on:
+      mf_db:
+        condition: service_healthy
+      mf_redis:
+        condition: service_healthy
+    networks:
+      - mf_network
+
 networks:
   mf_network:
     driver: bridge

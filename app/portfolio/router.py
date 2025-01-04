@@ -24,7 +24,7 @@ async def buy_mutual_fund(order: schemas.CreateOrderRequest, db: db_dependency, 
         raise HTTPException(status_code=400, detail=str(e)) from e
 
 
-@portfolio_router.get("/portfolio", response_model=schemas.PortfolioResponse, status_code=status.HTTP_200_OK)
+@portfolio_router.get("/", response_model=schemas.PortfolioResponse, status_code=status.HTTP_200_OK)
 async def get_portfolio(db: db_dependency, user: user_dependecy):
     """
     Get portfolio
