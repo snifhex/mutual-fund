@@ -1,4 +1,4 @@
-from typing import Annotated, Any
+from typing import Annotated
 
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
@@ -21,7 +21,7 @@ def authenticate_user(username: str, password: str, db: db_dependency) -> User |
     return user
 
 
-async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]) -> dict[str, Any]:
+async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
     try:
         payload = verify_access_token(token)
         username: str = payload.get("sub")
